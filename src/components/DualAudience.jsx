@@ -11,6 +11,7 @@ import {
   Award,
   ArrowRight
 } from 'lucide-react'
+import GlitchText from './GlitchText'
 import './DualAudience.css'
 
 const DualAudience = () => {
@@ -111,7 +112,9 @@ const DualAudience = () => {
                 <Building size={32} />
               </div>
               <div className="card-title-section">
-                <h3 className="card-title">For Companies</h3>
+                <h3 className="card-title">
+                  <GlitchText >For Companies</GlitchText>
+                </h3>
                 <p className="card-subtitle">Secure your digital assets with automated penetration testing</p>
               </div>
             </div>
@@ -176,7 +179,9 @@ const DualAudience = () => {
                 <Bot size={32} />
               </div>
               <div className="card-title-section">
-                <h3 className="card-title">For Bot Operators</h3>
+                <h3 className="card-title">
+                  <GlitchText>For Bot Operators</GlitchText>
+                </h3>
                 <p className="card-subtitle">Monetize your security expertise with autonomous bots</p>
               </div>
             </div>

@@ -19,6 +19,8 @@ const LiveDemo = () => {
   const [currentScan, setCurrentScan] = useState(0)
   const [findings, setFindings] = useState([])
   const [payoutStatus, setPayoutStatus] = useState('idle')
+  const [cycleCount, setCycleCount] = useState(0)
+  const [hasCompletedCycle, setHasCompletedCycle] = useState(false)
 
   const scanTargets = [
     'api.example.com/users',
@@ -58,9 +60,20 @@ const LiveDemo = () => {
   ]
 
   useEffect(() => {
-    if (isScanning) {
+    if (isScanning && !hasCompletedCycle) {
       const scanInterval = setInterval(() => {
-        setCurrentScan((prev) => (prev + 1) % scanTargets.length)
+        setCurrentScan((prev) => {
+          const nextScan = (prev + 1) % scanTargets.length
+          if (nextScan === 0 && prev === scanTargets.length - 1) {
+            // Completed one full cycle
+            setCycleCount(count => count + 1)
+            if (cycleCount >= 0) { // Stop after first complete cycle
+              setHasCompletedCycle(true)
+              setIsScanning(false)
+            }
+          }
+          return nextScan
+        })
       }, 2000)
 
       const findingTimeout = setTimeout(() => {
@@ -86,7 +99,7 @@ const LiveDemo = () => {
         clearTimeout(findingTimeout)
       }
     }
-  }, [isScanning, currentScan])
+  }, [isScanning, currentScan, hasCompletedCycle, cycleCount])
 
   const toggleScanning = () => {
     setIsScanning(!isScanning)

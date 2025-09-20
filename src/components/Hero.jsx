@@ -2,6 +2,10 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Shield, Zap, Bot, Network } from 'lucide-react'
 import ParticleField from './ParticleField'
+import DataStream from './DataStream'
+import NetworkPulse from './NetworkPulse'
+import TerminalEffect from './TerminalEffect'
+import GlitchText from './GlitchText'
 import './Hero.css'
 
 const Hero = () => {
@@ -25,68 +29,32 @@ const Hero = () => {
     }
   }
 
-  const iconVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: 0.8,
-        type: "spring",
-        stiffness: 100
-      }
-    }
-  }
+  const terminalCommands = [
+    'nmap -sS -O target.domain.com',
+    'sqlmap -u "http://target.com/page?id=1" --dbs',
+    'nikto -h http://target.com',
+    'dirb http://target.com /usr/share/wordlists/dirb/common.txt',
+    'hydra -l admin -P passwords.txt target.com ssh',
+    'VULNERABILITIES DETECTED: 7 HIGH, 12 MEDIUM',
+    'BOUNTY PAYMENT INITIATED: 0.5 ETH'
+  ]
 
   return (
     <section className="hero">
       <div className="grid-overlay"></div>
       <div className="floating-elements"></div>
-      <ParticleField count={30} className="hero-particles" />
+      <ParticleField count={50} className="hero-particles" />
+      <DataStream direction="vertical" density={20} className="background cyber-green right-side" />
+      <DataStream direction="vertical" density={15} className="background cyber-blue right-side-alt" />
+      <DataStream direction="horizontal" density={12} className="background cyber-green horizontal-flow" />
+      <DataStream direction="diagonal" density={8} className="background cyber-blue diagonal-flow" />
       
       <motion.div 
-        className="container hero-container"
+        className="hero-container"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Animated Icons */}
-        <div className="hero-icons">
-          <motion.div 
-            className="hero-icon"
-            variants={iconVariants}
-            style={{ top: '15%', left: '8%' }}
-            whileHover={{ scale: 1.2, rotate: 15 }}
-          >
-            <Shield className="icon-shield" />
-          </motion.div>
-          <motion.div 
-            className="hero-icon"
-            variants={iconVariants}
-            style={{ top: '12%', right: '12%', animationDelay: '2s' }}
-            whileHover={{ scale: 1.2, rotate: -15 }}
-          >
-            <Bot className="icon-bot" />
-          </motion.div>
-          <motion.div 
-            className="hero-icon"
-            variants={iconVariants}
-            style={{ bottom: '20%', left: '15%', animationDelay: '4s' }}
-            whileHover={{ scale: 1.2, rotate: 15 }}
-          >
-            <Zap className="icon-zap" />
-          </motion.div>
-          <motion.div 
-            className="hero-icon"
-            variants={iconVariants}
-            style={{ bottom: '15%', right: '8%', animationDelay: '6s' }}
-            whileHover={{ scale: 1.2, rotate: -15 }}
-          >
-            <Network className="icon-network" />
-          </motion.div>
-        </div>
-
         {/* Main Content */}
         <div className="hero-content">
           <motion.h1 
@@ -101,24 +69,32 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              Autonomous, Trustless
+              POWER UP
+            </motion.span>
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
+              WITH
             </motion.span>
             <br />
             <motion.span 
               className="gradient-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
             >
-              Penetration Testing
+              NEXT-GEN
             </motion.span>
             <br />
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
             >
-              — Paid Automatically.
+              CYBER DEFENSE
             </motion.span>
           </motion.h1>
 
@@ -126,9 +102,9 @@ const Hero = () => {
             className="hero-subtitle"
             variants={itemVariants}
           >
-            Security bots continuously scan for vulnerabilities while smart contracts 
-            handle instant cryptocurrency payouts. No disputes, no middlemen, 
-            just transparent, immutable cybersecurity bounties.
+            Revolutionary AI-powered autonomous security bots that continuously
+            hunt for vulnerabilities while blockchain smart contracts ensure
+            instant, trustless bounty payments. The future of cybersecurity is here.
           </motion.p>
 
           <motion.div 
@@ -156,6 +132,51 @@ const Hero = () => {
             >
               Run a Bot
             </motion.button>
+          </motion.div>
+
+          {/* Floating Icons Section */}
+          <motion.div 
+            className="hero-icons-section"
+            variants={itemVariants}
+          >
+            <div className="floating-icons-grid">
+              <motion.div 
+                className="floating-icon"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                whileHover={{ scale: 1.2, rotate: 15 }}
+              >
+                <Shield className="icon-shield" />
+              </motion.div>
+              <motion.div 
+                className="floating-icon"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.7 }}
+                whileHover={{ scale: 1.2, rotate: -15 }}
+              >
+                <Bot className="icon-bot" />
+              </motion.div>
+              <motion.div 
+                className="floating-icon"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 1.9 }}
+                whileHover={{ scale: 1.2, rotate: 15 }}
+              >
+                <Zap className="icon-zap" />
+              </motion.div>
+              <motion.div 
+                className="floating-icon"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 2.1 }}
+                whileHover={{ scale: 1.2, rotate: -15 }}
+              >
+                <Network className="icon-network" />
+              </motion.div>
+            </div>
           </motion.div>
 
           <motion.div 

@@ -81,7 +81,11 @@
 }
 
 .brand-logo svg {
-  color: var(--icon-color);
+  color: var(--button-primary-text);
+  background: var(--button-primary-bg);
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(160, 160, 160, 0.1);
 }
 
 .brand-name {
@@ -147,7 +151,11 @@
 }
 
 .links-title svg {
-  color: var(--icon-color);
+  color: var(--button-primary-text);
+  background: var(--button-primary-bg);
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(160, 160, 160, 0.1);
 }
 
 .links-list {

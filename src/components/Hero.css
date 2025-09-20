@@ -10,17 +10,25 @@
 .hero-container {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 550px;
+  margin: 0;
+  padding-left: 2%;
+  width: 100%;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.1;
@@ -32,63 +40,73 @@
   content: '';
   position: absolute;
   bottom: -10px;
-  left: 50%;
-  width: 100px;
+  left: 0;
+  width: 80px;
   height: 2px;
   background: var(--gradient-primary);
-  transform: translateX(-50%) scaleX(0);
+  transform: scaleX(0);
   animation: title-underline 0.8s ease-out 1.5s forwards;
 }
 
 @keyframes title-underline {
   to {
-    transform: translateX(-50%) scaleX(1);
+    transform: scaleX(1);
   }
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--secondary-text);
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1.3rem;
   line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--primary-bg);
+  overflow: hidden;
+  margin-bottom: -2rem;
 }
 
 .hero-cta {
   display: flex;
   gap: 1rem;
-  justify-content: center;
-  margin-bottom: 3rem;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
 .hero-stats {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin-top: 2rem;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
 .stat {
-  text-align: center;
+  text-align: left;
+  min-width: 120px;
 }
 
 .stat-number {
   display: block;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   font-family: 'Space Grotesk', sans-serif;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.125rem;
 }
 
 .stat-label {
-  font-size: 0.875rem;
+  font-size: 0.625rem;
   color: var(--accent-text);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  line-height: 1.2;
 }
 
 /* Hero Icons */
@@ -166,7 +184,36 @@
   height: 100%;
 }
 
+/* Cyber Enhancement Elements */
+.hero-terminal {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  z-index: 3;
+  max-width: 450px;
+  opacity: 0.9;
+}
+
+.hero-network {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  z-index: 3;
+  opacity: 0.8;
+}
+
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .hero-terminal {
+    max-width: 350px;
+    right: 3%;
+  }
+  
+  .hero-network {
+    left: 3%;
+  }
+}
+
 @media (max-width: 1024px) {
   .hero-title {
     font-size: 3rem;
@@ -175,6 +222,113 @@
   .hero-subtitle {
     font-size: 1.125rem;
   }
+  
+  .hero-terminal {
+    display: none;
+  }
+  
+  .hero-network {
+    display: none;
+  }
+}
+
+/* Floating Icons Section */
+.hero-icons-section {
+  margin-top: 3rem;
+}
+
+.floating-icons-grid {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.floating-icon {
+  padding: 1rem;
+  background: rgba(160, 160, 160, 0.1);
+  border: 1px solid var(--border-primary);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  animation: float-up-down 3s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.floating-icon:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.floating-icon:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.floating-icon:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+@keyframes float-up-down {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.floating-icon:hover {
+  background: rgba(160, 160, 160, 0.2);
+  box-shadow: 0 0 20px rgba(160, 160, 160, 0.3);
+}
+
+.floating-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--icon-color);
+}
+
+.icon-shield {
+  color: #60a5fa;
+}
+
+.icon-bot {
+  color: #34d399;
+}
+
+.icon-zap {
+  color: #fbbf24;
+}
+
+.icon-network {
+  color: #a78bfa;
+}
+
+/* Enhanced Data Stream Positioning */
+.right-side {
+  right: 10%;
+  opacity: 0.6;
+}
+
+.right-side-alt {
+  right: 20%;
+  opacity: 0.4;
+  animation-delay: 2s;
+}
+
+.horizontal-flow {
+  top: 30%;
+  opacity: 0.3;
+}
+
+.diagonal-flow {
+  top: 60%;
+  right: 15%;
+  opacity: 0.5;
+  transform: rotate(45deg);
 }
 
 @media (max-width: 768px) {

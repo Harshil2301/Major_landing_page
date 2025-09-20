@@ -14,6 +14,8 @@ import {
   Database,
   Bot
 } from 'lucide-react'
+import DataStream from './DataStream'
+import NetworkPulse from './NetworkPulse'
 import './Roadmap.css'
 
 const Roadmap = () => {
@@ -163,6 +165,9 @@ const Roadmap = () => {
   return (
     <section className="roadmap section">
       <div className="container">
+        <DataStream direction="horizontal" density={5} className="sparse cyber-red" />
+        <NetworkPulse nodeCount={8} className="background" />
+        
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
@@ -239,61 +244,6 @@ const Roadmap = () => {
               </motion.div>
             )
           })}
-        </motion.div>
-
-        {/* DAO Section */}
-        <motion.div
-          className="dao-section"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="dao-header">
-            <div className="dao-icon">
-              <Users size={32} />
-            </div>
-            <div className="dao-info">
-              <h3 className="dao-title">
-                Decentralized <span className="gradient-text">Governance</span>
-              </h3>
-              <p className="dao-description">
-                Join our DAO and help shape the future of autonomous cybersecurity. 
-                Token holders gain voting rights and influence platform development.
-              </p>
-            </div>
-          </div>
-
-          <div className="dao-features">
-            {daoFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="dao-feature"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-              >
-                <div className="feature-icon">
-                  <feature.icon size={20} />
-                </div>
-                <div className="feature-content">
-                  <h4 className="feature-title">{feature.title}</h4>
-                  <p className="feature-description">{feature.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="dao-cta">
-            <button className="btn-primary">
-              Join the DAO
-            </button>
-            <button className="btn-secondary">
-              Learn More
-            </button>
-          </div>
         </motion.div>
 
         {/* Stats Section */}

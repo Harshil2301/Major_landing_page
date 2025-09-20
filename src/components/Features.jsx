@@ -10,6 +10,7 @@ import {
   Globe, 
   TrendingUp 
 } from 'lucide-react'
+import DataStream from './DataStream'
 import './Features.css'
 
 const Features = () => {
@@ -87,6 +88,8 @@ const Features = () => {
   return (
     <section className="features section">
       <div className="container">
+        <DataStream direction="vertical" density={8} className="sparse cyber-purple" />
+        
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
