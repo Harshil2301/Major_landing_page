@@ -1,0 +1,274 @@
+.how-it-works {
+  background: var(--secondary-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(20, 184, 166, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--secondary-text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.step-card {
+  flex: 1;
+  background: var(--accent-bg);
+  border: 1px solid var(--border-secondary);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+.step-card:hover {
+  border-color: var(--border-primary);
+  transform: translateY(-10px);
+  background: var(--accent-bg);
+}
+
+.step-card:hover .step-glow {
+  opacity: 0.3;
+}
+
+.step-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(160, 160, 160, 0.1) 0%, rgba(120, 120, 120, 0.05) 100%);
+  opacity: 0;
+  border-radius: 50%;
+  filter: blur(40px);
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.step-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: var(--button-primary-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(160, 160, 160, 0.2);
+}
+
+.step-icon svg {
+  color: var(--button-primary-text);
+  z-index: 2;
+}
+
+.step-number {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-bg);
+  border: 2px solid var(--primary-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-cyan);
+}
+
+.step-content {
+  position: relative;
+  z-index: 2;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.step-description {
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.step-details {
+  list-style: none;
+  padding: 0;
+}
+
+.step-details li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-text);
+  font-size: 0.875rem;
+}
+
+.step-details li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-cyan);
+  font-weight: 700;
+}
+
+.step-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--primary-cyan);
+  margin: 0 1rem;
+}
+
+.process-flow {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.flow-line {
+  position: relative;
+  height: 2px;
+  background: var(--border-secondary);
+  border-radius: 1px;
+  margin-bottom: 2rem;
+}
+
+.flow-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: 1px;
+}
+
+.flow-nodes {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.flow-node {
+  background: var(--accent-bg);
+  border: 2px solid var(--border-primary);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-cyan);
+  backdrop-filter: blur(10px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .step-card {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .step-card {
+    padding: 1.5rem;
+  }
+  
+  .step-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .step-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .step-title {
+    font-size: 1.25rem;
+  }
+  
+  .flow-nodes {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .flow-line {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+  
+  .steps-container {
+    gap: 2rem;
+  }
+  
+  .step-card {
+    padding: 1rem;
+  }
+}
